@@ -1,0 +1,462 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>WEAVORYN. Apparel, gaming and tech</title><meta name="description" content="Premium apparel, gaming and technology for a modern lifestyle."><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet"><style>
+
+/* ---------- Design tokens: "Sand" (warm, rounded) ---------- */
+:root{
+  --bg:#E9E1D3; --bg2:#F6F1E8; --ink:#2A2118; --muted:#7a6c5a; --line:#cfc3ae;
+  --accent:#2F4A3A; --on-accent:#F6F1E8; --foot:#2A2118; --on-foot:#E9E1D3;
+  --f-display:"Fraunces",Georgia,serif; --f-body:"Manrope",system-ui,sans-serif;
+  --radius:28px; --border:1px solid var(--line); --shadow:none; --hd-weight:500;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--f-display);font-weight:var(--hd-weight);line-height:1.02;margin:0}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 14px;color:var(--muted)}
+
+/* announcement + header */
+.topbar{background:#121212;color:#FAF7F2;text-align:center;font-size:12px;padding:8px}
+.topbar{background:var(--accent)}
+.site-header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:var(--border)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--f-display);font-size:28px;letter-spacing:.01em}
+.nav ul{display:flex;gap:38px;list-style:none;margin:0;padding:0;font-size:13px}
+.nav a{padding:6px 0;border-bottom:1px solid transparent}
+.nav .current-menu-item a,.nav a:hover{border-color:var(--ink);font-weight:600}
+.icons{display:flex;gap:22px;align-items:center}
+.icons a,.icons button{background:none;border:0;color:inherit;cursor:pointer;padding:0;position:relative;display:flex}
+.icons svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5}
+.cart-count{position:absolute;top:-7px;right:-9px;background:var(--accent);color:var(--on-accent);font-size:10px;border-radius:99px;min-width:16px;height:16px;display:grid;place-items:center}
+.search-panel{display:none;border-top:var(--border);padding:16px 0;background:var(--bg2)}
+.search-panel.open{display:block}
+.search-panel input{width:100%;padding:14px;border:var(--border);background:var(--bg);color:var(--ink);font:inherit;border-radius:var(--radius)}
+.menu-toggle{display:flex}
+
+/* hero */
+.hero{position:relative;min-height:540px;background:var(--bg);overflow:hidden;border-bottom:var(--border)}
+.hero-img{position:absolute;right:0;top:0;bottom:0;width:58%;background:var(--bg2) center/cover no-repeat}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg),transparent 40%)}
+.hero .wrap{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:540px;padding-top:40px;padding-bottom:40px}
+.slide{display:none;max-width:480px}
+.slide.on{display:block;animation:in .7s ease both}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.slide h1{font-size:clamp(46px,6.2vw,78px);text-transform:uppercase;margin-bottom:26px}
+.slide p{max-width:320px;margin:0 0 30px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:var(--on-accent);padding:15px 26px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:var(--border);border-color:var(--accent);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .2s}
+.btn:hover{transform:translate(-2px,-2px)}
+.slider-ctl{display:flex;align-items:center;gap:18px;margin-top:70px;font-size:12px}
+.slider-ctl button{background:none;border:0;font-size:20px;cursor:pointer;color:var(--ink)}
+.slider-ctl .bar{width:100px;height:1px;background:var(--line)}
+
+/* sections */
+.section{padding:72px 0 8px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;gap:20px}
+.sec-head h2{font-size:clamp(30px,3.6vw,44px);text-transform:uppercase}
+.sec-head a{font-size:13px;border-bottom:1px solid var(--ink)}
+.collections{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.coll{position:relative;aspect-ratio:1/.85;background:var(--bg2) center/cover;overflow:hidden;border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);color:#fff;display:flex;align-items:flex-end}
+.coll::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.7))}
+.coll div{position:relative;z-index:1;padding:22px}
+.coll h3{font-size:26px;text-transform:uppercase}
+.coll span{font-size:13px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.p-card .thumb{aspect-ratio:1/1.05;background:var(--bg2);display:grid;place-items:center;border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.p-card .thumb img{width:80%;height:80%;object-fit:contain;mix-blend-mode:multiply}
+.p-meta{display:flex;justify-content:space-between;align-items:flex-start;padding-top:14px;font-size:13px}
+.p-meta b{display:block;margin-top:4px;font-size:14px}
+.p-meta a.add{padding:4px}
+.p-meta svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.story{margin-top:72px;background:#0e0e0e;color:#FAF7F2;padding:80px 0}
+.story{background:var(--accent);margin:72px 28px 0;border-radius:var(--radius)}
+.story h2{font-size:clamp(28px,3.4vw,42px);text-transform:uppercase;margin-bottom:14px}
+.story p{max-width:300px;margin:0 0 20px}
+.story a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid}
+
+/* footer */
+.site-footer{background:var(--foot);color:var(--on-foot);padding:36px 0 22px;font-size:13px}
+.site-footer .row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.site-footer ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.site-footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:18px;font-size:12px;opacity:.7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.page-content{padding:60px 0;max-width:820px}
+.page-content h1{font-size:46px;margin-bottom:24px}
+
+@media(max-width:900px){
+  .nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:var(--border);padding:20px 28px}
+  .nav.open{display:block}.nav ul{flex-direction:column;gap:16px}
+  .hero-img{width:100%;opacity:.35}
+  .collections{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- Inner pages + WooCommerce ---------- */
+.entry h2,.entry h3{margin:28px 0 10px}.entry p{max-width:64ch}
+.results{list-style:none;padding:0}.results li{padding:14px 0;border-bottom:var(--border)}
+.notice{padding:12px 16px;border:var(--border);border-radius:var(--radius);margin:0 0 18px}
+.notice.err{border-color:#b3261e;color:#b3261e}
+.wv-form{display:grid;gap:18px;max-width:560px;margin-top:18px}
+.wv-form label,.woocommerce form .form-row label{display:grid;gap:6px;font-size:13px}
+input[type=text],input[type=email],input[type=password],input[type=tel],input[type=number],input[type=search],textarea,select,.woocommerce form .form-row input.input-text{
+  width:100%;padding:13px 14px;border:var(--border);border-radius:var(--radius);background:var(--bg2);color:var(--ink);font:inherit}
+button,.button,input[type=submit],.woocommerce a.button,.woocommerce button.button,.woocommerce .button.alt{
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;background:var(--accent);color:var(--on-accent);border:var(--border);border-color:var(--accent);
+  padding:14px 24px;font:500 12px var(--f-body);letter-spacing:.12em;text-transform:uppercase;border-radius:var(--radius);box-shadow:var(--shadow)}
+.icons button,.slider-ctl button,.menu-toggle{background:none;border:0;box-shadow:none;padding:0;color:inherit}
+.woo-page{padding:48px 28px 80px}
+.woocommerce-breadcrumb{font-size:12px;color:var(--muted);margin-bottom:22px}
+.woocommerce-products-header__title,.product_title,.woo-page h1.page-title,.woo-page h2{font-family:var(--f-display);font-weight:var(--hd-weight)}
+.woocommerce-products-header__title,.woo-page h1{font-size:clamp(34px,4vw,52px);text-transform:uppercase;margin:0 0 22px}
+.woocommerce-result-count,.woocommerce-ordering{display:inline-block;font-size:13px;margin:0 0 22px}
+.woocommerce-ordering{float:right}
+ul.products{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;clear:both}
+ul.products li.product{position:relative}
+ul.products li.product img{aspect-ratio:1/1.05;object-fit:cover;width:100%;background:var(--bg2);border:var(--border);border-radius:var(--radius)}
+.woocommerce-loop-product__title{font:500 14px var(--f-body);margin:12px 0 4px}
+ul.products .price{font-weight:600;font-size:14px}
+ul.products li.product .button{margin-top:12px;padding:11px 16px}
+.onsale{position:absolute;top:10px;left:10px;background:var(--accent);color:var(--on-accent);font-size:11px;padding:4px 10px;border-radius:var(--radius);z-index:2}
+/* single product */
+div.product{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+div.product .woocommerce-product-gallery{position:relative;border:var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg2)}
+div.product .summary .price{font-size:22px;font-weight:600;margin:10px 0 18px}
+div.product form.cart{display:flex;gap:12px;margin:22px 0}
+div.product form.cart .quantity input{width:80px}
+.woocommerce-tabs,.related,.upsells{grid-column:1/-1}
+.woocommerce-tabs ul.tabs{list-style:none;display:flex;gap:28px;padding:0;border-bottom:var(--border)}
+.woocommerce-tabs ul.tabs a{display:block;padding:12px 0}.woocommerce-tabs ul.tabs .active a{border-bottom:2px solid var(--ink);font-weight:600}
+/* cart, checkout, account */
+table.shop_table{width:100%;border-collapse:collapse;margin-bottom:28px}
+table.shop_table th,table.shop_table td{padding:14px 10px;border-bottom:var(--border);text-align:left;font-size:14px}
+table.shop_table img{width:64px;border-radius:var(--radius)}
+.cart_totals,.woocommerce-checkout-review-order{background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:24px}
+.cart_totals{max-width:420px;margin-left:auto}
+.woocommerce-checkout .col2-set{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.woocommerce form .form-row{margin-bottom:16px}
+.woocommerce-message,.woocommerce-info,.woocommerce-error{list-style:none;padding:14px 18px;border:var(--border);border-radius:var(--radius);margin:0 0 22px;background:var(--bg2)}
+.woocommerce-error{border-color:#b3261e}
+.woocommerce-MyAccount-navigation ul{list-style:none;padding:0;display:flex;gap:24px;flex-wrap:wrap;border-bottom:var(--border);margin:0 0 28px}
+.woocommerce-MyAccount-navigation li.is-active a{font-weight:600;border-bottom:2px solid var(--ink)}
+.woocommerce-MyAccount-navigation a{display:block;padding:10px 0}
+.woocommerce nav.woocommerce-pagination ul{list-style:none;display:flex;gap:8px;justify-content:center;padding:0;margin-top:32px}
+.woocommerce nav.woocommerce-pagination a,.woocommerce nav.woocommerce-pagination span{padding:8px 14px;border:var(--border);border-radius:var(--radius)}
+@media(max-width:900px){
+  ul.products{grid-template-columns:repeat(2,1fr)}
+  div.product,.woocommerce-checkout .col2-set{grid-template-columns:1fr}
+  table.shop_table_responsive thead{display:none}
+}
+
+/* ---------- Contact page ---------- */
+.contact-head{padding-top:64px;padding-bottom:12px}
+.contact-head h1{font-size:clamp(38px,5vw,64px);margin-bottom:14px}
+.contact-head p:last-child{max-width:46ch;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;padding-top:32px;padding-bottom:90px;align-items:start}
+.contact-img{aspect-ratio:4/3;background:var(--bg2) center/cover no-repeat;border:var(--border);border-radius:var(--radius);margin-bottom:26px}
+.contact-info{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.contact-info li{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:16px 0;border-bottom:var(--border);font-size:14px}
+.contact-info b{font-weight:600;color:var(--muted);font-size:12px}
+.contact-info a{border-bottom:1px solid currentColor;justify-self:start}
+.contact-card{background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:36px;box-shadow:var(--shadow)}
+.contact-card h2{font-size:30px;margin-bottom:6px}
+.contact-card .wv-form{max-width:none}
+.wv-form .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.notice.ok{border-color:var(--accent);background:var(--bg)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.wv-form .two{grid-template-columns:1fr}.contact-info li{grid-template-columns:100px 1fr}.contact-card{padding:24px}}
+
+/* ---------- Contact form (v2) ---------- */
+.wv-form{gap:22px}
+.wv-form .field{border:0;padding:0;margin:0;min-width:0}
+.wv-form legend{font-size:13px;font-weight:600;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:block!important}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.chip span{display:block;padding:10px 18px;border:var(--border);border-radius:min(var(--radius),99px);background:var(--bg);font-size:13px;transition:background .15s,color .15s}
+.chip input:checked+span{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.wv-form label{font-weight:600;font-size:13px}
+.wv-form label small{font-weight:400;color:var(--muted)}
+.wv-form input:focus,.wv-form textarea:focus,.wv-form select:focus{outline:2px solid var(--accent);outline-offset:1px;background:var(--bg)}
+.wv-form textarea{resize:vertical;min-height:140px}
+.wv-form .count{text-align:right;font-weight:400;color:var(--muted)}
+.send-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.send-row .note{font-size:13px;color:var(--muted)}
+.sent{text-align:center;padding:40px 10px;display:grid;gap:10px;justify-items:center}
+.sent h3{font-size:30px;margin:0}.sent p{max-width:38ch;color:var(--muted);margin:0 0 10px}
+.sent svg{color:var(--accent)}
+
+/* ---------- Menu drawer (three-line button) ---------- */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:90}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--bg);color:var(--ink);border-left:var(--border);z-index:100;transform:translateX(100%);transition:transform .3s ease;padding:22px 28px;overflow-y:auto}
+.drawer-open .drawer{transform:none}.drawer-open .drawer-overlay{opacity:1;pointer-events:auto}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.drawer-head button{background:none;border:0;box-shadow:none;padding:0;color:inherit;cursor:pointer;display:flex}
+.drawer-head svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6}
+.drawer ul{list-style:none;margin:0;padding:0}
+.drawer li a{display:block;padding:16px 0;border-bottom:var(--border);font-family:var(--f-display);font-size:26px}
+.drawer li a:hover{padding-left:8px;transition:padding .2s}
+/* photo overlays */
+.story{position:relative;background-size:cover;background-position:center;overflow:hidden}
+.story::before{content:"";position:absolute;inset:0;background:rgba(14,14,14,.62)}
+.story .wrap{position:relative}
+.hero-img{background-color:var(--bg2)}
+.p-card .thumb img,ul.products li.product img{mix-blend-mode:normal}
+.p-card .thumb img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- Hero with 3 photos ---------- */
+.hero-img{opacity:0;transition:opacity .6s}.hero-img.on{opacity:1}
+
+/* ---------- Drawer buttons ---------- */
+.drawer-cta{display:grid;gap:10px;margin-bottom:22px}
+.btn.ghost,.drawer-cta .ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.drawer-cta .btn{justify-content:space-between;width:100%}
+
+/* ---------- Cart ---------- */
+.ship-bar{background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:22px;font-size:14px}
+.ship-bar p{margin:0 0 10px}
+.track{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.track span{display:block;height:100%;background:var(--accent);transition:width .3s}
+.woocommerce-cart-form table.shop_table,.woocommerce-cart-form tbody{display:block;border:0;margin:0}
+.woocommerce-cart-form thead{display:none}
+.woocommerce-cart-form tr.cart_item{display:grid;grid-template-columns:96px 1fr 100px 130px 100px;grid-template-areas:"img name price qty sub" "img rm . . .";align-items:center;gap:6px 18px;padding:18px;margin-bottom:14px;background:var(--bg2);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.woocommerce-cart-form tr.cart_item td{display:block;border:0;padding:0}
+td.product-thumbnail{grid-area:img}td.product-name{grid-area:name;font-weight:600}td.product-price{grid-area:price}td.product-quantity{grid-area:qty}td.product-subtotal{grid-area:sub;font-weight:600;text-align:right}td.product-remove{grid-area:rm;align-self:start}
+td.product-thumbnail img{width:96px;height:96px;object-fit:cover;border-radius:var(--radius);background:var(--bg)}
+.quantity{display:inline-flex;align-items:center;border:var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg)}
+.quantity input.qty{width:44px;text-align:center;border:0!important;background:none!important;padding:10px 0!important;-moz-appearance:textfield}
+.quantity input::-webkit-outer-spin-button,.quantity input::-webkit-inner-spin-button{-webkit-appearance:none}
+.qbtn{border:0!important;background:none!important;box-shadow:none!important;color:var(--ink)!important;padding:10px 14px!important;font-size:16px!important;letter-spacing:0!important}
+a.remove{font-size:0;display:inline-flex;color:var(--muted)}
+a.remove::after{content:"Remove";font-size:12px;border-bottom:1px solid currentColor}
+a.remove:hover{color:#b3261e}
+.woocommerce-cart-form td.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;padding:6px 0 0;border:0}
+.woocommerce-cart-form tr:last-child{display:block}
+.coupon{display:flex;gap:8px}.coupon input{width:200px}
+.cart-collaterals{display:flex;justify-content:flex-end;margin-top:20px}
+.cart_totals{width:100%;max-width:420px}
+.cart_totals h2{font-size:28px;margin-bottom:12px}
+.cart_totals table.shop_table{display:table}
+.cart_totals .order-total td,.cart_totals .order-total th{font-size:17px}
+
+/* ---------- Checkout ---------- */
+.steps{list-style:none;display:flex;gap:12px;padding:0;margin:0 0 28px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;counter-reset:s;flex-wrap:wrap}
+.steps li{display:flex;align-items:center;gap:10px;color:var(--muted)}
+.steps li::before{counter-increment:s;content:counter(s);width:26px;height:26px;border-radius:99px;border:var(--border);display:grid;place-items:center;font-size:11px}
+.steps li:not(:last-child)::after{content:"";width:34px;height:1px;background:var(--line)}
+.steps li.on{color:var(--ink);font-weight:600}.steps li.on::before,.steps li.done::before{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+form.checkout{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+form.checkout .col2-set{display:block}
+form.checkout .col2-set .col-1,form.checkout .col2-set .col-2{width:auto;float:none}
+.woocommerce-billing-fields,.woocommerce-shipping-fields,.woocommerce-additional-fields{background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px}
+.woocommerce-billing-fields h3,.woocommerce-shipping-fields h3,.woocommerce-additional-fields h3{font-size:26px;margin-bottom:18px}
+.woocommerce-billing-fields__field-wrapper,.woocommerce-shipping-fields__field-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.form-row-wide{grid-column:1/-1}
+#order_review_heading{display:none}
+form.checkout #order_review{position:sticky;top:96px;background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);grid-column:2;grid-row:1}
+form.checkout #customer_details{grid-column:1;grid-row:1}
+#order_review::before{content:"Order summary";display:block;font:var(--hd-weight) 28px var(--f-display);margin-bottom:12px}
+.woocommerce-checkout-review-order-table{margin-bottom:18px}
+.co-remove{display:block;font-size:12px;font-weight:400;color:var(--muted);border-bottom:1px solid currentColor;width:max-content;margin-top:4px}
+.co-remove:hover{color:#b3261e}
+.wc_payment_methods{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:10px}
+.wc_payment_methods li{border:var(--border);border-radius:var(--radius);padding:14px 16px;background:var(--bg)}
+.wc_payment_methods label{display:inline;font-weight:600}.payment_box{font-size:13px;color:var(--muted);margin-top:8px}
+#place_order{width:100%;padding:18px}
+.secure{text-align:center;font-size:12px;color:var(--muted);margin:12px 0 0}
+
+/* ---------- Login / create account ---------- */
+.auth{display:grid;grid-template-columns:1fr 1fr;min-height:620px;border:var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--bg2)}
+.auth-img{position:relative;background:var(--bg) center/cover no-repeat;display:flex;align-items:flex-end;color:#fff}
+.auth-img::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.75))}
+.auth-img>div{position:relative;padding:36px}
+.auth-img .eyebrow{color:rgba(255,255,255,.8)}
+.auth-img h2{font-size:clamp(28px,3vw,40px);margin-bottom:16px}
+.auth-img ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+.auth-img li::before{content:"\2713";margin-right:10px}
+.auth-box{padding:44px;display:flex;flex-direction:column;justify-content:center}
+.auth-tabs{display:flex;gap:6px;margin-bottom:28px;border-bottom:var(--border)}
+.auth-tabs button{background:none!important;border:0!important;box-shadow:none!important;color:var(--muted)!important;padding:12px 18px!important;letter-spacing:.04em!important;text-transform:none!important;font-size:15px!important;border-bottom:2px solid transparent!important;border-radius:0!important}
+.auth-tabs button.on{color:var(--ink)!important;border-bottom-color:var(--ink)!important;font-weight:600}
+.auth-panel{display:none;gap:18px}.auth-panel.on{display:grid}
+.auth-panel label{display:grid;gap:6px;font-size:13px;font-weight:600}
+.auth-panel small,.auth-panel .note{font-weight:400;color:var(--muted);font-size:12px;margin:0}
+.pw{position:relative;display:block}.pw input{padding-right:70px}
+.pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none!important;border:0!important;box-shadow:none!important;color:var(--muted)!important;padding:8px 10px!important;font-size:12px!important;text-transform:none!important;letter-spacing:0!important}
+.row-between{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.row-between a,.auth-switch a{border-bottom:1px solid currentColor}
+label.check{display:flex!important;grid-template-columns:none;align-items:center;gap:8px;font-weight:400!important}
+label.check input{width:auto}
+.auth-switch{text-align:center;font-size:13px;color:var(--muted);margin:0}
+
+@media(max-width:900px){
+  .woocommerce-cart-form tr.cart_item{grid-template-columns:80px 1fr;grid-template-areas:"img name" "img price" "img qty" "img sub" "img rm"}
+  td.product-subtotal{text-align:left}td.product-thumbnail img{width:80px;height:80px}
+  form.checkout{grid-template-columns:1fr}
+  form.checkout #order_review,form.checkout #customer_details{grid-column:1;grid-row:auto;position:static}
+  .auth{grid-template-columns:1fr}.auth-img{min-height:220px}.auth-box{padding:28px}
+  .woocommerce-billing-fields__field-wrapper{grid-template-columns:1fr}
+}
+
+.pg{display:none}.pg.on{display:block}
+.p-meta a.add{cursor:pointer}
+.cart-empty{text-align:center;padding:60px 0;display:grid;gap:14px;justify-items:center}
+.toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);padding:12px 20px;border-radius:99px;font-size:13px;z-index:120;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.sec-title{font-size:28px;margin:0 0 12px}
+.done-box{text-align:center;display:grid;gap:12px;justify-items:center;padding:60px 0}
+
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script><style>.shopbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px;align-items:center}.shopchip{border:var(--border);background:var(--bg2);color:var(--ink);border-radius:99px;padding:9px 16px;font-size:13px;letter-spacing:0;text-transform:none;box-shadow:none;margin:0 6px 6px 0;cursor:pointer}.shopchip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}.ordercard{display:flex;justify-content:space-between;gap:16px;padding:18px;margin-bottom:12px;background:var(--bg2);border:var(--border);border-radius:var(--radius)}.pill{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--accent);color:var(--on-accent);font-size:11px;text-transform:capitalize}</style></head><body>
+<div class="topbar">Free shipping worldwide on orders over $100</div>
+<header class="site-header"><div class="wrap"><a class="logo" href="#" data-go="home">WEAVORYN.</a>
+<nav class="nav" id="nav"><ul><li class="current-menu-item"><a href="#" data-go="home">Home</a></li><li><a href="#" data-go="shop">Shop</a></li><li><a href="#" data-go="shop">Collections</a></li><li><a href="#" data-go="about">About</a></li><li><a href="#" data-go="contact">Contact</a></li></ul></nav>
+<div class="icons"><button id="search-toggle" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button><a href="#" data-go="account" aria-label="Account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></a><a href="#" data-go="cart" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg><span class="cart-count" id="h-count">0</span></a><button class="menu-toggle" id="menu-toggle" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div>
+<div class="search-panel" id="search-panel"><div class="wrap"><input type="search" placeholder="Search products" aria-label="Search products"></div></div></header>
+<div class="drawer-overlay" id="dov"></div><aside class="drawer" id="dr" aria-hidden="true"><div class="drawer-head"><span class="logo">WEAVORYN.</span><button id="dcl" aria-label="Close menu"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div><div class="drawer-cta"><a class="btn" href="#" data-go="cart"><span>Cart</span><span id="d-count">(0)</span></a><a class="btn ghost" href="#" data-go="checkout"><span>Checkout</span><span id="d-total">$0.00</span></a></div><ul><li><a href="#" data-go="home">Home</a></li><li><a href="#" data-go="shop">Shop</a></li><li><a href="#" data-go="product">Product</a></li><li><a href="#" data-go="account">Account</a></li><li><a href="#" data-go="about">About</a></li><li><a href="#" data-go="contact">Contact</a></li><li><a href="#" data-go="faq">FAQ</a></li></ul></aside>
+
+<div class="pg on" data-page="home">
+<section class="hero"><div class="hero-img on" style="background-image:url(/hero-rack.jpg)"></div><div class="hero-img" style="background-image:url(https://images.unsplash.com/photo-1708792878861-a435bae649f8?auto=format&fit=crop&q=75&w=1600)"></div><div class="hero-img" style="background-image:url(https://images.unsplash.com/photo-1633295711512-d79872ab3671?auto=format&fit=crop&q=75&w=1600)"></div><div class="wrap"><div class="slide on"><p class="eyebrow">The art of everyday</p><h1>Simplicity is the new statement.</h1><p>Premium apparel, gaming and technology for a modern lifestyle.</p><a class="btn" href="#" data-go="shop">Explore collections <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a></div><div class="slide"><p class="eyebrow">Play without limits</p><h1>Built for the long session.</h1><p>Headsets, keyboards and mice tuned for focus and comfort.</p><a class="btn" href="#" data-go="shop">Explore collections <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a></div><div class="slide"><p class="eyebrow">Carry less, do more</p><h1>Technology that stays out of the way.</h1><p>Watches, audio and accessories made to last.</p><a class="btn" href="#" data-go="shop">Explore collections <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a></div><div class="slider-ctl"><span id="slide-no">01 / 03</span><span class="bar"></span><button id="prev" aria-label="Previous">&larr;</button><button id="next" aria-label="Next">&rarr;</button></div></div></section>
+<section class="section"><div class="wrap"><div class="sec-head"><div><p class="eyebrow">Explore our collections</p><h2>A world of essentials.</h2></div></div><div class="collections"><a class="coll" href="#" data-go="shop" style="background-image:url(https://images.unsplash.com/photo-1775997167884-077821f7e3ea?auto=format&fit=crop&q=75&w=900)"><div><h3>Apparel</h3><span>Discover more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></div></a><a class="coll" href="#" data-go="shop" style="background-image:url(https://images.unsplash.com/photo-1729327741363-db735223ec64?auto=format&fit=crop&q=75&w=900)"><div><h3>Gaming</h3><span>Discover more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></div></a><a class="coll" href="#" data-go="shop" style="background-image:url(https://images.unsplash.com/photo-1524561506982-601111bed7a6?auto=format&fit=crop&q=75&w=900)"><div><h3>Technology</h3><span>Discover more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></div></a></div></div></section>
+<section class="section"><div class="wrap"><div class="sec-head"><div><p class="eyebrow">Featured products</p><h2>Curated for you.</h2></div><a href="#" data-go="shop">View all products <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg></a></div><div class="products"><article class="p-card"><a class="thumb" href="#" data-go="product"><img src="https://images.unsplash.com/photo-1651585753601-153bb1f728a8?auto=format&fit=crop&q=75&w=600" alt="Essential Hoodie" loading="lazy"></a><div class="p-meta"><div><a href="#" data-go="product">Essential Hoodie</a><b>$79.00</b></div><a class="add" href="#" data-add="Essential Hoodie" aria-label="Add to cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg></a></div></article><article class="p-card"><a class="thumb" href="#" data-go="product"><img src="https://images.unsplash.com/photo-1660391532247-4a8ad1060817?auto=format&fit=crop&q=75&w=600" alt="Pro Wireless Headphones" loading="lazy"></a><div class="p-meta"><div><a href="#" data-go="product">Pro Wireless Headphones</a><b>$249.00</b></div><a class="add" href="#" data-add="Pro Wireless Headphones" aria-label="Add to cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg></a></div></article><article class="p-card"><a class="thumb" href="#" data-go="product"><img src="https://images.unsplash.com/photo-1689872072441-5aed6df99448?auto=format&fit=crop&q=75&w=600" alt="Mechanical Keyboard" loading="lazy"></a><div class="p-meta"><div><a href="#" data-go="product">Mechanical Keyboard</a><b>$149.00</b></div><a class="add" href="#" data-add="Mechanical Keyboard" aria-label="Add to cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg></a></div></article><article class="p-card"><a class="thumb" href="#" data-go="product"><img src="https://images.unsplash.com/photo-1567160895408-822fbe800cc8?auto=format&fit=crop&q=75&w=600" alt="Smartwatch Pro" loading="lazy"></a><div class="p-meta"><div><a href="#" data-go="product">Smartwatch Pro</a><b>$299.00</b></div><a class="add" href="#" data-add="Smartwatch Pro" aria-label="Add to cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg></a></div></article></div></div></section>
+<section class="story" style="background-image:url(https://images.unsplash.com/photo-1618424562492-f778e25652a1?auto=format&fit=crop&q=75&w=1600)"><div class="wrap"><h2>Less noise. More meaning.</h2><p>A modern destination for style, technology and everyday essentials.</p><a href="#" data-go="about">Discover our story</a></div></section>
+</div>
+
+<div class="pg" data-page="shop"><main class="wrap woo-page"><nav class="woocommerce-breadcrumb">Home / Shop</nav><h1>Shop</h1><div id="shop-root"></div></main></div>
+
+<div class="pg" data-page="product"><main class="wrap woo-page"><div id="prod-root"></div></main></div>
+
+<div class="pg" data-page="cart"><main class="wrap woo-page"><h1>Cart</h1><div id="cart-root"></div></main></div>
+
+<div class="pg" data-page="checkout"><main class="wrap woo-page"><h1>Checkout</h1><div id="co-root"></div></main></div>
+
+
+
+<div class="pg" data-page="about"><main><div class="contact-img" style="aspect-ratio:21/8;border-radius:0;border-width:0 0 1px;background-image:url(https://images.unsplash.com/photo-1512400930990-e0bc0bd809df?auto=format&fit=crop&q=75&w=1400)"></div><div class="wrap page-content"><h1>About</h1><div class="entry"><h2>Less noise. More meaning.</h2><p>Weavoryn is a modern store for apparel, gaming gear and everyday technology. We pick fewer products and make sure each one is worth owning.</p><p>Every item is chosen for quality, comfort and design that lasts.</p></div></div></main></div>
+
+<div class="pg" data-page="contact"><main class="contact"><section class="wrap contact-head"><p class="eyebrow">Contact</p><h1>We are here to help.</h1><p>Ask about an order, a product or a return. We reply within one business day.</p></section><section class="wrap contact-grid"><aside class="contact-side"><div class="contact-img" style="background-image:url(https://images.unsplash.com/photo-1523635156480-6c1bd46b7145?auto=format&fit=crop&q=75&w=1000)"></div><ul class="contact-info"><li><b>Email</b><a href="#">hello@weavoryn.com</a></li><li><b>Phone</b><a href="#">+1 555 010 2030</a></li><li><b>Support hours</b><span>Mon to Fri, 9:00 to 18:00</span></li><li><b>Quick answers</b><a href="#" data-go="faq">Read the FAQ</a></li></ul></aside><div class="contact-card"><h2>Send a message</h2><form class="wv-form" id="cf"><fieldset class="field"><legend>What can we help with?</legend><div class="chips"><label class="chip"><input type="radio" name="s" checked><span>Order help</span></label><label class="chip"><input type="radio" name="s"><span>Product question</span></label><label class="chip"><input type="radio" name="s"><span>Returns</span></label><label class="chip"><input type="radio" name="s"><span>Partnership</span></label><label class="chip"><input type="radio" name="s"><span>Other</span></label></div></fieldset><div class="two"><label>Your name<input type="text" placeholder="Jane Doe" required></label><label>Email<input type="email" placeholder="jane@example.com" required></label></div><label>Order number <small>(optional)</small><input type="text" placeholder="#1042"></label><label>Message<textarea rows="6" maxlength="1000" placeholder="Tell us a little about what you need" required id="ta"></textarea><small class="count" id="ct">0 / 1000</small></label><div class="send-row"><button class="btn" type="submit">Send message &rarr;</button><span class="note">We reply within one business day.</span></div></form></div></section></main></div>
+
+<div class="pg" data-page="faq"><main class="wrap page-content"><h1>FAQ</h1><div class="entry"><h3>How do I track my order?</h3><p>Log in to My Account and open Orders.</p><h3>Which payment methods do you accept?</h3><p>Visa and Mastercard through our secure card checkout.</p><h3>Can I change my order?</h3><p>Contact us within 12 hours of ordering.</p><h3>What is your shipping policy?</h3><p>Free shipping worldwide on orders over $100. Orders ship within 2 business days.</p><h3>What is your returns policy?</h3><p>Return unused items within 30 days for a full refund.</p></div></main></div>
+
+<div class="pg" data-page="account"><main class="wrap woo-page">
+<div id="auth-wrap"><section class="auth"><div class="auth-img" style="background-image:url(https://images.unsplash.com/photo-1785838627621-b26ce1f439e4?auto=format&fit=crop&q=75&w=1000)"><div><p class="eyebrow">Weavoryn account</p><h2>Everything you love, one login.</h2><ul><li>Track every order in one place</li><li>Check out faster next time</li><li>Save your details securely</li></ul></div></div>
+<div class="auth-box"><div class="auth-tabs"><button type="button" class="on" data-auth="login">Log in</button><button type="button" data-auth="register">Create account</button></div>
+<form class="auth-panel on" id="auth-login"><label>Email<input type="email" autocomplete="email" required></label><label>Password<span class="pw"><input type="password" autocomplete="current-password" required><button type="button" class="pw-toggle">Show</button></span></label><div class="row-between"><span></span><a href="#" data-auth="reset">Forgot password?</a></div><button class="btn" type="submit">Log in</button><p class="auth-switch">New here? <a href="#" data-auth="register">Create an account</a></p></form>
+<form class="auth-panel" id="auth-register"><label>Full name<input type="text" autocomplete="name" required></label><label>Email address<input type="email" autocomplete="email" required></label><label>Password<span class="pw"><input type="password" autocomplete="new-password" minlength="8" required><button type="button" class="pw-toggle">Show</button></span><small>At least 8 characters.</small></label><p class="note" style="margin:0;font-size:12px;color:var(--muted)">We keep your details to run your account and share new sign-ups with the store team. Your password is never shared.</p><button class="btn" type="submit">Create account</button><p class="auth-switch">Already have an account? <a href="#" data-auth="login">Log in</a></p></form>
+<form class="auth-panel" id="auth-reset"><p class="note" style="margin:0">Enter your email and we will send a link to set a new password.</p><label>Email<input type="email" required></label><button class="btn" type="submit">Send reset link</button><p class="auth-switch"><a href="#" data-auth="login">Back to log in</a></p></form>
+<form class="auth-panel" id="auth-newpw"><label>New password<span class="pw"><input type="password" autocomplete="new-password" minlength="8" required><button type="button" class="pw-toggle">Show</button></span></label><button class="btn" type="submit">Save new password</button></form>
+<p class="notice" id="auth-msg" style="display:none;margin-top:16px"></p></div></section></div>
+<div id="acct" style="display:none"><nav class="woocommerce-MyAccount-navigation"><ul><li class="is-active"><a href="#">Orders</a></li><li><a href="#" id="logout">Log out</a></li></ul></nav><h2 id="hello" style="font-size:34px;margin-bottom:18px"></h2><div id="orders"></div></div>
+</main></div><div class="pg" data-page="shipping"><main class="wrap page-content"><h1>Shipping</h1><div class="entry"><p>Free shipping on orders over $100. Orders under $100 ship for $9. Orders leave within 2 business days and arrive in 3 to 7 business days depending on location.</p></div></main></div><div class="pg" data-page="returns"><main class="wrap page-content"><h1>Returns</h1><div class="entry"><p>Return unused items within 30 days of delivery for a full refund. Reply to your order email with your order number to start a return.</p></div></main></div><div class="pg" data-page="privacy"><main class="wrap page-content"><h1>Privacy Policy</h1><div class="entry"><p>We collect only the details needed to process your order and run your account: name, email, address and phone. We never sell your data and never store card details. Passwords are handled by our secure sign-in provider and are never visible to us.</p></div></main></div><div class="pg" data-page="terms"><main class="wrap page-content"><h1>Terms of Service</h1><div class="entry"><p>By using this store you agree to these terms. Prices and availability can change without notice. Orders must be paid by card at checkout. Orders are processed after payment is confirmed.</p></div></main></div><footer class="site-footer"><div class="wrap"><div class="row"><a class="logo" href="#" data-go="home">WEAVORYN.</a><ul><li><a href="#" data-go="shop">Shop</a></li><li><a href="#" data-go="about">About</a></li><li><a href="#" data-go="contact">Contact</a></li><li><a href="#" data-go="shipping">Shipping</a></li><li><a href="#" data-go="returns">Returns</a></li><li><a href="#" data-go="faq">FAQ</a></li><li><a href="#" data-go="account">Account</a></li></ul></div><div class="legal"><span>&copy; 2026 WEAVORYN. All rights reserved.</span><span>Photos via Unsplash &nbsp; <a href="#" data-go="privacy">Privacy Policy</a> &nbsp; <a href="#" data-go="terms">Terms of Service</a></span></div></div></footer>
+
+<script>
+var P={"Essential Hoodie": {"p": 79, "i": "https://images.unsplash.com/photo-1651585753601-153bb1f728a8?auto=format&fit=crop&q=75&w=300"}, "Pro Wireless Headphones": {"p": 249, "i": "https://images.unsplash.com/photo-1660391532247-4a8ad1060817?auto=format&fit=crop&q=75&w=300"}, "Mechanical Keyboard": {"p": 149, "i": "https://images.unsplash.com/photo-1689872072441-5aed6df99448?auto=format&fit=crop&q=75&w=300"}, "Smartwatch Pro": {"p": 299, "i": "https://images.unsplash.com/photo-1567160895408-822fbe800cc8?auto=format&fit=crop&q=75&w=300"}, "Oversized Hoodie": {"p": 99, "i": "https://images.unsplash.com/photo-1708792878861-a435bae649f8?auto=format&fit=crop&q=75&w=300"}, "Sport Watch": {"p": 199, "i": "https://images.unsplash.com/photo-1788459689176-ff366a6db205?auto=format&fit=crop&q=75&w=300"}, "Gaming Monitor": {"p": 329, "i": "https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&q=75&w=300"}, "Digital Watch": {"p": 89, "i": "https://images.unsplash.com/photo-1610991138614-0d4d78ac6de8?auto=format&fit=crop&q=75&w=300"}};
+var cart;try{cart=JSON.parse(localStorage.getItem('wv_cart')||'[]')}catch(e){cart=[]}var disc=0;
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+function m(v){return '$'+v.toFixed(2)}
+function tot(){var s=0,c=0;cart.forEach(function(x){s+=P[x.n].p*x.q;c+=x.q});var d=s*disc,sh=(s-d>=100||!c)?0:9;return{s:s,c:c,d:d,sh:sh,t:s-d+sh}}
+function toast(t){var e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(function(){e.remove()},1800)}
+function ship(t){var left=Math.max(0,100-(t.s-t.d));return '<div class="ship-bar"><p>'+(left>0?'Add <b>'+m(left)+'</b> more for free shipping':'You have free shipping')+'</p><div class="track"><span style="width:'+Math.min(100,(t.s-t.d)/100*100)+'%"></span></div></div>'}
+function totalsRows(t,co){return '<tr><th>Subtotal</th><td>'+m(t.s)+'</td></tr>'+(t.d?'<tr><th>Discount (10%)</th><td>-'+m(t.d)+'</td></tr>':'')+'<tr><th>Shipping</th><td>'+(t.sh?m(t.sh):'Free')+'</td></tr><tr class="order-total"><th>Total</th><td><b>'+m(t.t)+'</b></td></tr>'}
+function render(){try{localStorage.setItem('wv_cart',JSON.stringify(cart))}catch(e){}
+ var t=tot();
+ $('#h-count').textContent=t.c;$('#d-count').textContent='('+t.c+')';$('#d-total').textContent=m(t.t);
+ var cr=$('#cart-root');
+ if(!cart.length){cr.innerHTML='<div class="cart-empty"><h2>Your cart is empty</h2><p>Add something you love and it will show up here.</p><a class="btn" href="#" data-go="shop">Continue shopping</a></div>'}
+ else{cr.innerHTML=ship(t)+'<div class="woocommerce-cart-form"><table class="shop_table cart"><tbody>'+cart.map(function(x,i){var p=P[x.n];return '<tr class="cart_item"><td class="product-thumbnail"><img src="'+p.i+'" alt=""></td><td class="product-name">'+x.n+'</td><td class="product-price">'+m(p.p)+'</td><td class="product-quantity"><div class="quantity"><button type="button" class="qbtn" data-q="'+i+'" data-d="-1" aria-label="Decrease">\u2212</button><input class="qty" value="'+x.q+'" readonly><button type="button" class="qbtn" data-q="'+i+'" data-d="1" aria-label="Increase">+</button></div></td><td class="product-subtotal">'+m(p.p*x.q)+'</td><td class="product-remove"><a href="#" class="remove" data-rm="'+i+'" aria-label="Remove '+x.n+'">&times;</a></td></tr>'}).join('')+'<tr><td class="actions"><div class="coupon"><input type="text" id="cp" placeholder="Coupon code (try WELCOME10)"><button class="button" id="cpb" type="button">Apply</button></div><a class="btn ghost" href="#" data-go="shop" style="background:transparent;color:var(--ink);border-color:var(--ink)">Continue shopping</a></td></tr></tbody></table></div><div class="cart-collaterals"><div class="cart_totals"><h2>Cart totals</h2><table class="shop_table"><tbody>'+totalsRows(t)+'</tbody></table></div></div>'}
+ var co=$('#co-root');
+ if(!cart.length&&!co.dataset.done){co.innerHTML='<div class="cart-empty"><h2>Nothing to check out yet</h2><a class="btn" href="#" data-go="shop">Go to shop</a></div>';return}
+ if(co.dataset.done)return;
+ co.innerHTML='<ol class="steps"><li class="done">Cart</li><li class="on">Details</li><li>Card payment</li></ol><form class="checkout" id="coform"><div id="customer_details"><div class="woocommerce-billing-fields"><h3>Billing details</h3><div class="woocommerce-billing-fields__field-wrapper"><p class="form-row"><label>First name<input type="text" required></label></p><p class="form-row"><label>Last name<input type="text" required></label></p><p class="form-row form-row-wide"><label>Email<input type="email" required></label></p><p class="form-row form-row-wide"><label>Phone<input type="tel"></label></p><p class="form-row form-row-wide"><label>Country<select required><option value="">Select a country</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Pakistan</option><option>Germany</option><option>France</option><option>Italy</option><option>Spain</option><option>Netherlands</option><option>Belgium</option><option>Austria</option><option>Ireland</option><option>Portugal</option><option>Sweden</option><option>Denmark</option><option>Finland</option><option>Poland</option><option>Greece</option><option>Czechia</option><option>Romania</option><option>Hungary</option><option>Bulgaria</option><option>Croatia</option><option>Slovakia</option><option>Slovenia</option><option>Lithuania</option><option>Latvia</option><option>Estonia</option><option>Luxembourg</option><option>Cyprus</option><option>Malta</option><option>Norway</option><option>Switzerland</option></select></label></p><p class="form-row form-row-wide"><label>Street address<input type="text" required></label></p><p class="form-row"><label>City<input type="text" required></label></p><p class="form-row"><label>Postcode<input type="text" required></label></p></div></div><div class="woocommerce-additional-fields"><h3>Order notes</h3><p class="form-row"><label>Notes (optional)<textarea rows="3" placeholder="Anything we should know about delivery?"></textarea></label></p></div></div><div id="order_review"><table class="shop_table woocommerce-checkout-review-order-table"><tbody>'+cart.map(function(x,i){return '<tr><td class="product-name">'+x.n+' &times; '+x.q+'<a class="co-remove" href="#" data-rm="'+i+'">Remove</a></td><td>'+m(P[x.n].p*x.q)+'</td></tr>'}).join('')+totalsRows(t)+'</tbody></table><div id="payment"><ul class="wc_payment_methods"><li><label><input type="radio" name="pm" checked> Credit or debit card</label><div class="payment_box">Pay securely with Visa or Mastercard through Safepay. Your card details are entered on Safepay’s secure checkout.</div></li></ul><button class="btn" id="place_order" type="submit">Continue to card payment \u00b7 '+m(t.t)+'</button><p class="secure">Secure checkout. Free returns within 30 days.</p></div></div></form>'}
+function go(k){$$('.pg').forEach(function(p){p.classList.toggle('on',p.dataset.page===k)});closeDrawer();window.scrollTo(0,0)}
+function openDrawer(){document.body.classList.add('drawer-open');$('#dr').setAttribute('aria-hidden','false')}
+function closeDrawer(){document.body.classList.remove('drawer-open');$('#dr').setAttribute('aria-hidden','true')}
+$('#menu-toggle').onclick=openDrawer;$('#dcl').onclick=closeDrawer;$('#dov').onclick=closeDrawer;
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer()});
+$('#search-toggle').onclick=function(){$('#search-panel').classList.toggle('open')};
+document.addEventListener('click',function(e){
+ var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go);return}
+ t=e.target.closest('[data-add]');if(t){e.preventDefault();var n=t.dataset.add,f=cart.filter(function(x){return x.n===n})[0];f?f.q++:cart.push({n:n,q:1});render();toast(n+' added to cart');return}
+ t=e.target.closest('[data-rm]');if(t){e.preventDefault();cart.splice(+t.dataset.rm,1);render();toast('Item removed');return}
+ t=e.target.closest('[data-q]');if(t){var it=cart[+t.dataset.q];it.q=Math.max(1,it.q+ +t.dataset.d);render();return}
+ if(e.target.id==='cpb'){var v=($('#cp').value||'').trim().toUpperCase();if(v==='WELCOME10'){disc=.1;render();toast('Coupon applied')}else toast('Coupon not valid');return}
+ t=e.target.closest('[data-auth]');if(t){e.preventDefault();auth(t.dataset.auth)}
+});
+$$('.pg a[href="#"],.p-card a[href="#"]').forEach(function(a){});
+document.addEventListener('submit',function(e){
+ if(e.target.id!=='coform')return;e.preventDefault();
+ var f=$$('input[type=text],input[type=email],input[type=tel],select,textarea',e.target).map(function(x){return x.value}),b=$('#place_order');
+ b.disabled=true;b.textContent='Opening secure checkout...';
+ fetch('/api/order',{method:'POST',headers:wvHeaders(),body:JSON.stringify({items:cart,coupon:disc?'WELCOME10':'',customer:{first:f[0],last:f[1],email:f[2],phone:f[3],country:f[4],address:f[5],city:f[6],postcode:f[7],notes:f[8]}})})
+ .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
+ .then(function(x){if(!x.ok)throw new Error(x.j.error||'Could not start card payment');if(!x.j.checkoutUrl)throw new Error('Secure checkout is unavailable');window.location.assign(x.j.checkoutUrl)})
+ .catch(function(err){b.disabled=false;b.textContent='Continue to card payment';toast(err.message)});
+});
+// hero
+var sl=$$('.slide'),bg=$$('.hero-img'),n=0;
+function hs(i){sl[n].classList.remove('on');bg[n].classList.remove('on');n=(i+sl.length)%sl.length;sl[n].classList.add('on');bg[n].classList.add('on');$('#slide-no').textContent='0'+(n+1)+' / 0'+sl.length}
+$('#prev').onclick=function(){hs(n-1)};$('#next').onclick=function(){hs(n+1)};
+// contact
+$('#ta').oninput=function(){$('#ct').textContent=this.value.length+' / 1000'};
+$('#cf').onsubmit=function(e){e.preventDefault();var f=this,i=$$('input[type=text],input[type=email],textarea',f).map(function(x){return x.value}),bt=f.querySelector('button');bt.disabled=true;
+ fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:i[0],email:i[1],order:i[2],message:i[3],topic:f.querySelector('input[name=s]:checked').nextElementSibling.textContent})})
+ .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
+ .then(function(x){if(!x.ok)throw new Error(x.j.error||'Could not send');f.parentNode.innerHTML='<div class="sent"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><h3>Message sent</h3><p>Thank you. We will reply within one business day.</p></div>'})
+ .catch(function(err){bt.disabled=false;toast(err.message)})};
+render();
+document.addEventListener('error',function(e){if(e.target&&e.target.tagName==='IMG')e.target.style.visibility='hidden'},true);
+/* ===== accounts, catalog, search ===== */
+var CAT={'Essential Hoodie':['Apparel','Heavyweight cotton fleece with a relaxed fit. Made to last through every season.'],'Pro Wireless Headphones':['Gaming','Over-ear wireless headset with a clear mic and all-day comfort.'],'Mechanical Keyboard':['Gaming','Compact mechanical keyboard with a tactile, satisfying feel.'],'Smartwatch Pro':['Technology','Sleek smartwatch with a bright display and a battery that lasts the week.'],'Oversized Hoodie':['Apparel','Soft oversized hoodie with a dropped shoulder and deep pockets.'],'Sport Watch':['Technology','Light sport watch with a bold two-tone band.'],'Gaming Monitor':['Gaming','Sharp, fast monitor built for long sessions.'],'Digital Watch':['Technology','Classic digital watch in black and silver.']};
+var shopState={cat:'All',q:'',sort:''},curProd='Essential Hoodie',sb=null,sess=null;
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function wvHeaders(){var h={'Content-Type':'application/json'};if(sess)h.Authorization='Bearer '+sess.access_token;return h}
+function pcard(n){var p=P[n];return '<li class="product"><a href="#" data-go="product"><img src="'+p.i.replace('w=300','w=600')+'" alt="'+n+'" loading="lazy"><h2 class="woocommerce-loop-product__title">'+n+'</h2><span class="price">'+m(p.p)+'</span></a><a class="button add" href="#" data-add="'+n+'">Add to cart</a></li>'}
+function renderShop(){
+ var q=shopState.q.toLowerCase(),names=Object.keys(CAT).filter(function(n){return(shopState.cat==='All'||CAT[n][0]===shopState.cat)&&(!q||n.toLowerCase().indexOf(q)>-1||CAT[n][0].toLowerCase()===q)});
+ if(shopState.sort==='lo')names.sort(function(a,b){return P[a].p-P[b].p});if(shopState.sort==='hi')names.sort(function(a,b){return P[b].p-P[a].p});
+ var chips=['All','Apparel','Gaming','Technology'].map(function(c){return '<button class="shopchip'+(c===shopState.cat?' on':'')+'" data-cat="'+c+'">'+c+'</button>'}).join('');
+ $('#shop-root').innerHTML='<div class="shopbar"><div>'+chips+'</div><select id="sortsel" style="width:auto"><option value="">Default sorting</option><option value="lo"'+(shopState.sort==='lo'?' selected':'')+'>Price: low to high</option><option value="hi"'+(shopState.sort==='hi'?' selected':'')+'>Price: high to low</option></select></div>'+(shopState.q?'<p>Results for &ldquo;'+esc(shopState.q)+'&rdquo; <a href="#" data-clear style="border-bottom:1px solid">Clear</a></p>':'')+(names.length?'<ul class="products">'+names.map(pcard).join('')+'</ul>':'<p>No products match your search.</p>')}
+function renderProduct(n){curProd=n;var p=P[n],c=CAT[n],rel=Object.keys(CAT).filter(function(x){return x!==n&&CAT[x][0]===c[0]}).slice(0,4);
+ $('#prod-root').innerHTML='<nav class="woocommerce-breadcrumb">Home / '+c[0]+' / '+n+'</nav><div class="product"><div class="woocommerce-product-gallery"><img src="'+p.i.replace('w=300','w=1000')+'" alt="'+n+'" style="width:100%;aspect-ratio:1;object-fit:cover"></div><div class="summary"><h1 class="product_title">'+n+'</h1><p class="price">'+m(p.p)+'</p><p>'+c[1]+'</p><div class="cart" style="display:flex;gap:12px;margin:22px 0"><button class="button add" data-add="'+n+'">Add to cart</button></div><p style="font-size:13px;color:var(--muted)">Category: '+c[0]+' &middot; Free shipping over $100</p></div></div>'+(rel.length?'<h2 class="sec-title" style="margin-top:48px">You may also like</h2><ul class="products">'+rel.map(pcard).join('')+'</ul>':'')}
+document.addEventListener('click',function(e){
+ var t=e.target.closest('[data-go="product"]');
+ if(t){var c=t.closest('.p-card,li.product'),im=c&&c.querySelector('img');renderProduct(im?im.alt:curProd)}
+ t=e.target.closest('.coll');if(t){shopState.cat=t.querySelector('h3').textContent;shopState.q='';renderShop()}
+ else{t=e.target.closest('[data-go="shop"]');if(t){shopState.cat='All';shopState.q='';renderShop()}}
+ t=e.target.closest('[data-cat]');if(t){e.preventDefault();shopState.cat=t.dataset.cat;renderShop()}
+ if(e.target.closest('[data-clear]')){e.preventDefault();shopState.q='';renderShop()}
+},true);
+document.addEventListener('change',function(e){if(e.target.id==='sortsel'){shopState.sort=e.target.value;renderShop()}});
+$('#search-panel input').addEventListener('keydown',function(e){if(e.key==='Enter'){shopState.q=this.value.trim();shopState.cat='All';renderShop();go('shop');$('#search-panel').classList.remove('open')}});
+renderShop();renderProduct(curProd);
+
+function msg(t,ok){var e=$('#auth-msg');e.textContent=t;e.style.display='block';e.className='notice'+(ok?' ok':' err')}
+function auth(k){$$('.auth-tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.auth===k)});$$('.auth-panel').forEach(function(p){p.classList.toggle('on',p.id==='auth-'+k)});$('#auth-msg').style.display='none'}
+$$('.pw-toggle').forEach(function(b){b.onclick=function(){var i=b.previousElementSibling;i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'Show':'Hide'}});
+function noSb(){if(!sb){msg('Accounts are not set up on this site yet.',false);return true}}
+$('#auth-login').onsubmit=async function(e){e.preventDefault();if(noSb())return;var i=this.querySelectorAll('input'),r=await sb.auth.signInWithPassword({email:i[0].value.trim(),password:i[1].value});if(r.error)msg(r.error.message,false)};
+$('#auth-register').onsubmit=async function(e){e.preventDefault();if(noSb())return;var i=this.querySelectorAll('input');if(i[2].value.length<8)return msg('Password must be at least 8 characters.',false);var r=await sb.auth.signUp({email:i[1].value.trim(),password:i[2].value,options:{data:{name:i[0].value.trim()},emailRedirectTo:location.origin}});if(r.error)return msg(r.error.message,false);if(!r.data.session)msg('Check your email and click the link to confirm your account.',true)};
+$('#auth-reset').onsubmit=async function(e){e.preventDefault();if(noSb())return;var r=await sb.auth.resetPasswordForEmail(this.querySelector('input').value.trim(),{redirectTo:location.origin});r.error?msg(r.error.message,false):msg('If that email has an account, a reset link is on its way.',true)};
+$('#auth-newpw').onsubmit=async function(e){e.preventDefault();var r=await sb.auth.updateUser({password:this.querySelector('input').value});if(r.error)return msg(r.error.message,false);msg('Password updated. You are signed in.',true);auth('login')};
+$('#logout').onclick=function(e){e.preventDefault();sb&&sb.auth.signOut()};
+async function showAccount(s){
+ if(!s){$('#acct').style.display='none';$('#auth-wrap').style.display='block';return}
+ $('#auth-wrap').style.display='none';$('#acct').style.display='block';$('#hello').textContent='Hello, '+((s.user.user_metadata||{}).name||s.user.email);
+ var r=await sb.from('orders').select('*').order('created_at',{ascending:false});
+ $('#orders').innerHTML=(r.data&&r.data.length)?r.data.map(function(o){return '<div class="ordercard"><div><b>'+esc(o.number)+'</b> &middot; '+new Date(o.created_at).toLocaleDateString()+'<br><small>'+o.items.map(function(i){return esc(i.n)+' &times; '+i.q}).join(', ')+'</small></div><div style="text-align:right"><span class="pill">'+esc(o.status)+(o.paid?' &middot; paid':'')+'</span><br><b>'+m(+o.total)+'</b></div></div>'}).join(''):'<div class="woocommerce-info">No orders yet. <a href="#" data-go="shop" style="border-bottom:1px solid">Browse the shop</a>.</div>'}
+fetch('/api/config').then(function(r){return r.json()}).then(function(c){
+ if(!c.url||!c.anon||!window.supabase)return;
+ sb=supabase.createClient(c.url,c.anon);
+ sb.auth.onAuthStateChange(function(ev,s){sess=s;
+  if(ev==='PASSWORD_RECOVERY'){go('account');auth('newpw');return}
+  showAccount(s);
+  if(ev==='SIGNED_IN'&&s)fetch('/api/welcome',{method:'POST',headers:wvHeaders()}).catch(function(){})})
+}).catch(function(){});
+var paymentReturn=new URLSearchParams(window.location.search),paymentState=paymentReturn.get('payment');
+if(paymentState==='return'){
+ var returnOrder=paymentReturn.get('order')||'';cart=[];disc=0;try{localStorage.removeItem('wv_cart')}catch(e){}
+ go('checkout');var returnBox=$('#co-root');returnBox.dataset.done=1;returnBox.innerHTML='<div class="done-box"><h2>Payment received</h2><p>Your card payment for order '+esc(returnOrder)+' is being confirmed. We will email you once it is verified.</p><a class="btn" href="#" data-go="home">Back to home</a></div>';
+ history.replaceState({},'',location.pathname);
+}else if(paymentState==='cancelled'){
+ go('checkout');history.replaceState({},'',location.pathname);setTimeout(function(){toast('Payment was cancelled. Your cart is still saved.')},0);
+}
+</script></body></html>

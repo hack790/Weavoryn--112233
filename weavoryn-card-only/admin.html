@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>WEAVORYN orders</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+<style>
+body{margin:0;background:#E9E1D3;color:#2A2118;font:15px/1.5 system-ui,sans-serif}.w{max-width:900px;margin:0 auto;padding:24px 18px}
+h1{font:500 32px Georgia,serif;margin:0 0 18px}input{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cfc3ae;border-radius:14px;background:#F6F1E8;font:inherit}
+button{cursor:pointer;border:0;border-radius:99px;padding:10px 16px;background:#2F4A3A;color:#F6F1E8;font:inherit;margin:0 6px 6px 0}button.g{background:#F6F1E8;color:#2A2118;border:1px solid #cfc3ae}
+.o{background:#F6F1E8;border:1px solid #cfc3ae;border-radius:22px;padding:18px;margin-bottom:14px}.p{display:inline-block;padding:2px 10px;border-radius:99px;background:#2F4A3A;color:#F6F1E8;font-size:12px;margin-right:6px}
+.m{color:#7a6c5a;font-size:13px}#e{color:#b3261e}
+</style></head><body><div class="w"><h1>WEAVORYN orders</h1>
+<form id="lf"><p>Log in with the store owner account (the ADMIN_EMAIL address).</p><input id="em" type="email" placeholder="Email" required><input id="pw" type="password" placeholder="Password" required><button>Log in</button></form>
+<p id="e"></p><div id="app" hidden><button class="g" id="out">Log out</button><div id="list"></div></div></div>
+<script>
+let sb,tok='';const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const api=(o,b)=>fetch('/api/admin',{method:b?'POST':'GET',headers:{'Content-Type':'application/json',Authorization:'Bearer '+tok},body:b?JSON.stringify(b):undefined}).then(async r=>{const j=await r.json();if(!r.ok)throw new Error(j.error||'Error');return j});
+async function load(){try{const j=await api();$('#lf').hidden=true;$('#app').hidden=false;$('#e').textContent='';
+ $('#list').innerHTML=j.orders.length?j.orders.map(o=>{const c=o.customer;return `<div class="o"><div><b>${esc(o.number)}</b> <span class="p">${esc(o.status)}</span>${o.paid?'<span class="p">paid</span>':''}<span class="m">${new Date(o.created_at).toLocaleString()}</span></div>
+ <p>${esc(c.first)} ${esc(c.last)} &middot; ${esc(o.email)} &middot; ${esc(c.phone||'')}<br><span class="m">${esc(c.address)}, ${esc(c.city)}, ${esc(c.postcode)}, ${esc(c.country)}</span></p>
+ <p>${o.items.map(i=>esc(i.n)+' &times; '+i.q).join(', ')}<br><b>$${Number(o.total).toFixed(2)}</b>${Number(o.refunded)?` <span class="m">refunded $${Number(o.refunded).toFixed(2)}</span>`:''}</p>
+ <button data-a="shipped" data-id="${o.id}">Mark shipped</button><button class="g" data-a="cancelled" data-id="${o.id}">Cancel</button></div>`}).join(''):'<p>No orders yet.</p>'}
+ catch(e){$('#e').textContent=e.message;$('#lf').hidden=false;$('#app').hidden=true}}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b)return;
+ if(!confirm('Send the customer an email for: '+b.dataset.a+'?'))return;
+ try{await api(1,{id:b.dataset.id,action:b.dataset.a});load()}catch(x){alert(x.message)}});
+$('#lf').onsubmit=async e=>{e.preventDefault();const r=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});if(r.error)return $('#e').textContent=r.error.message;tok=r.data.session.access_token;load()};
+$('#out').onclick=()=>{sb.auth.signOut();tok='';$('#app').hidden=true;$('#lf').hidden=false};
+fetch('/api/config').then(r=>r.json()).then(c=>{if(!c.url){$('#e').textContent='Supabase is not set up yet.';return}sb=supabase.createClient(c.url,c.anon)});
+</script></body></html>
